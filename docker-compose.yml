@@ -1,0 +1,14 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: rsl
+      POSTGRES_USER: rsl
+      POSTGRES_PASSWORD: rsl
+    ports:
+      - "5432:5432"
+    volumes:
+      - rsl-postgres:/var/lib/postgresql/data
+
+volumes:
+  rsl-postgres:
