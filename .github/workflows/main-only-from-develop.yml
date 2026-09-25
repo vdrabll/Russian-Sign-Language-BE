@@ -1,0 +1,16 @@
+name: main-only-from-develop
+on:
+  pull_request:
+    branches: [main]
+jobs:
+  source:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pull request в main только из develop
+        env:
+          HEAD_REF: ${{ github.head_ref }}
+        run: |
+          if [ "$HEAD_REF" != "develop" ]; then
+            echo "В main можно вливать только из develop"
+            exit 1
+          fi
